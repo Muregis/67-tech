@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>67 Tech Systems — Digital Solutions for African Business & Education</title>
+    <meta name="description" content="67 Tech Systems designs, builds, deploys, and supports practical software, school platforms, financial reconciliation gateways, and digital tools for organizations across Africa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #F3F0E7;
+            --paper-light: #FAF8F3;
+            --ink: #111916;
+            --ink-soft: #616B66;
+            --copper: #C85A32;
+            --copper-dark: #A04422;
+            --eucalyptus: #2D5A4C;
+            --eucalyptus-dark: #1E3D33;
+            --ochre: #8C6D21;
+            --line: rgba(17, 25, 22, 0.12);
+            --mist: rgba(17, 25, 22, 0.04);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: "Space Grotesk", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.5;
+        }
+        a { color: inherit; text-decoration: none; }
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(243, 240, 231, 0.94);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--line);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.03em;
+        }
+        .brand-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--ink);
+            color: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        nav a {
+            font-size: 13px;
+            font-family: "IBM Plex Mono", monospace;
+            color: var(--ink-soft);
+            transition: color 150s ease;
+        }
+        nav a:hover, nav a.cta { color: var(--ink); }
+        .nav-cta {
+            background: var(--copper);
+            color: var(--paper) !important;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .nav-cta:hover { background: var(--copper-dark); }
+
+        /* Hero */
+        .hero {
+            padding: 96px 0 80px;
+            background: var(--ink);
+            color: var(--paper);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 20px;
+        }
+        .section-label span { display: inline-block; }
+        .section-label .rule {
+            height: 1px;
+            width: 30px;
+            background: currentColor;
+            opacity: 0.4;
+        }
+        h1 {
+            font-size.clamp: 40px;
+            font-size: 52px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+        h1 em { font-style: normal; color: var(--copper); }
+        .hero p {
+            font-size: 17px;
+            color: rgba(243, 240, 231, 0.8);
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: "IBM Plex Mono", monospace;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 180ms ease;
+        }
+        .btn-primary { background: var(--copper); color: var(--paper); }
+        .btn-primary:hover { background: var(--copper-dark); }
+        .btn-outline { border: 1px solid rgba(243, 240, 231, 0.3); color: var(--paper); }
+        .btn-outline:hover { border-color: var(--paper); background: rgba(243, 240, 231, 0.05); }
+        
+        .hero-map {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 40px;
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .map-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            color: rgba(243, 240, 231, 0.6);
+        }
+        .map-nodes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .map-node {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px;
+            border-radius: 6px;
+        }
+        .map-node span { display: block; font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--copper); margin-bottom: 4px; }
+        .map-node strong { font-size: 15px; color: var(--paper); }
+
+        /* Sections */
+        section { padding: 90px 0; border-bottom: 1px solid var(--line); }
+        .section-title {
+            font-size: 36px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .section-title em { font-style: normal; color: var(--copper); }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Pillars / Solutions */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .pillar-card {
+            background: var(--paper-light);
+            border: 1px solid var(--line);
+            padding: 36px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pillar-num { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--copper); margin-bottom: 16px; }
+        .pillar-card h3 { font-size: 20px; margin-bottom: 12px; font-weight: 600; }
+        .pillar-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; }
+        .tag-list { display: flex; flex-wrap: wrap.gap: 6px; }
+        .tag { font-family: "IBM Plex Mono", monospace; font-size: 10px; background: var(--mist); border: 1px solid var(--line); padding: 4px 8px; border-radius: 2px; }
+
+        /* Products Atlas */
+        .filter-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 16px;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--line);
+            padding: 8px 16px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            color: var(--ink-soft);
+            transition: all 150ms ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            border-top: 1px solid var(--line);
+        }
+        .product-row {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: background 150ms ease;
+        }
+        .product-row-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .product-index {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 12px;
+            color: var(--copper);
+            min-width: 24px;
+        }
+        .product-main { flex: 1; }
+        .product-category {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .product-main h3 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+        .product-desc {
+            font-size: 14px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+            max-width: 700px;
+            margin-bottom: 12px;
+        }
+        .product-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--line);
+            background: var(--mist);
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+        .live-link {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            color: var(--eucalyptus);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 1px solid transparent;
+        }
+        .live-link:hover { border-color: currentColor; }
+        
+        .expand-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 200ms ease;
+        }
+        .expand-btn.open { transform: rotate(180deg); background: var(--ink); color: var(--paper); }
+        
+        .product-details {
+            display: none;
+            margin-top: 10px;
+            padding-left: 36px;
+            border-top: 1px dashed var(--line);
+            padding-top: 20px;
+        }
+        .product-details.open { display: block; }
+        .tech-stack-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .case-study-box {
+            background: var(--paper-light);
+            border: 1px solid var(--line);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+        .case-study-box strong { color: var(--ink); }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+        .contact-form {
+            background: var(--paper-light);
+            border: 1px solid var(--line);
+            padding: 40px;
+            border-radius: 6px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--ink-soft);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 14px;
+            color: var(--ink);
+        }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--copper);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(243, 240, 231, 0.1);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-links { display: flex; gap: 24px; font-family: "IBM Plex Mono", monospace; font-size: 12px; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 11px;
+            color: rgba(243, 240, 231, 0.5);
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid, .pillars-grid, .contact-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand">
+            <div class="brand-mark">67</div>
+            <span>TECH SYSTEMS</span>
+        </a>
+        <nav>
+            <a href="#solutions">Solutions</a>
+            <a href="#products">Products</a>
+            <a href="#founder">Leadership</a>
+            <a href="#contact" class="nav-cta">Bring the workflow ↗</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="section-label">
+                    <span>00 / 67</span>
+                    <span class="rule"></span>
+                    <span>Kenyan Technology Company</span>
+                </div>
+                <h1>Technology that <em>solves</em> real problems.</h1>
+                <p>67 Tech Systems designs, builds, deploys, and supports practical digital solutions for businesses, schools, and organizations across Africa.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Bring the workflow ↗</a>
+                    <a href="#products" class="btn btn-outline">See the systems atlas →</a>
+                </div>
+            </div>
+            <div class="hero-map">
+                <div class="map-header">
+                    <span>ECOSYSTEM / 01</span>
+                    <span>KE · AFRICA</span>
+                </div>
+                <div class="map-nodes">
+                    <div class="map-node">
+                        <span>01</span>
+                        <strong>Education</strong>
+                    </div>
+                    <div class="map-node">
+                        <span>02</span>
+                        <strong>Finance</strong>
+                    </div>
+                    <div class="map-node">
+                        <span>03</span>
+                        <strong>Agriculture</strong>
+                    </div>
+                    <div class="map-node">
+                        <span>04</span>
+                        <strong>Business</strong>
+                    </div>
+                </div>
+                <div class="map-header">
+                    <span>BUILD / INTEGRATE / SUPPORT</span>
+                    <span>01°17′S · 36°49′E</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <div class="section-label"><span>01</span><span class="rule"></span><span>Core pillars</span></div>
+                    <h2 class="section-title">Three connected ways<br><em>to work together.</em></h2>
+                </div>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">01 / SOLUTIONS</div>
+                        <h3>Technology Solutions</h3>
+                        <p>Custom software, business management portals, dashboards, APIs, databases, and integrations built around how your organization operates.</p>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag">Custom Software</span>
+                        <span class="tag">APIs & DBs</span>
+                        <span class="tag">Integrations</span>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">02 / PRODUCTS</div>
+                        <h3>Digital Products</h3>
+                        <p>Production-ready applications across education, finance, agriculture, and business operations with clear status and robust reliability.</p>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag">EduCore</span>
+                        <span class="tag">Livestock App</span>
+                        <span class="tag">SaccoCore</span>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div>
+                        <div class="pillar-num">03 / SERVICES</div>
+                        <h3>Digital Services</h3>
+                        <p>High-performance web presence, UI/UX design, technical support, and ongoing system optimization for African enterprises.</p>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag">Web Presence</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <div class="section-label"><span>02</span><span class="rule"></span><span>Product atlas</span></div>
+                    <h2 class="section-title">Products we’ve<br><em>put into practice.</em></h2>
+                </div>
+            </div>
+
+            <div class="filter-bar" id="filter-bar">
+                <button class="filter-btn active" data-filter="All">All 10</button>
+                <button class="filter-btn" data-filter="Digital products">Digital products 6</button>
+                <button class="filter-btn" data-filter="Automation">Automation 2</button>
+                <button class="filter-btn" data-filter="Web & design">Web & design 2</button>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="founder">
+        <div class="container contact-grid">
+            <div>
+                <div class="section-label"><span>03</span><span class="rule"></span><span>Founder & Engineering Lead</span></div>
+                <h2 class="section-title">Built by an engineer.<br><em>Built for real work.</em></h2>
+                <p style="color: var(--ink-soft); margin-bottom: 20px; line-height: 1.6;">67 Tech Systems is led by <strong>Victor Muregi</strong> (@Muregis), a systems architect focused on high-availability software for East African institutions. We prioritize clean architecture, offline-first reliability, and secure local payment integrations over generic templates.</p>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--copper); display: flex; gap: 20px;">
+                    <a href="https://github.com/Muregis" target="_blank">GitHub @Muregis ↗</a>
+                    <a href="https://www.linkedin.com/in/victor-muregi" target="_blank">LinkedIn Profile ↗</a>
+                </div>
+            </div>
+            <div class="pillar-card" style="background: var(--ink); color: var(--paper);">
+                <div>
+                    <div class="pillar-num">VICTOR MUREGI / FOUNDER</div>
+                    <h3 style="color: var(--paper); margin-bottom: 12px;">Engineering with context.</h3>
+                    <p style="color: rgba(243,240,231,0.8); margin-bottom: 20px;">“We don't deliver black-box code. We engineer transparent systems that empower local institutions, schools, and growing enterprises.”</p>
+                </div>
+                <div class="tag-list">
+                    <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--paper); border-color: rgba(255,255,255,0.2);">Full-Stack</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--paper); border-color: rgba(255,255,255,0.2);">M-Pesa API</span>
+                    <span class="tag" style="background: rgba(255,255,255,0.1); color: var(--paper); border-color: rgba(255,255,255,0.2);">Architecture</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-grid">
+            <div>
+                <div class="section-label"><span>04</span><span class="rule"></span><span>Start a conversation</span></div>
+                <h2 class="section-title">Have a problem<br><em>worth solving?</em></h2>
+                <p style="color: var(--ink-soft); margin-bottom: 24px; line-height: 1.6;">Tell us what you’re trying to build, improve, or automate. We’ll help turn your idea into a practical digital solution.</p>
+                
+                <div style="background: var(--paper-light); border: 1px solid var(--line); padding: 24px; border-radius: 6px; margin-bottom: 30px;">
+                    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--copper); text-transform: uppercase; display: block; margin-bottom: 8px;">Complimentary Discovery</span>
+                    <p style="font-size: 14px; color: var(--ink-soft); margin-bottom: 16px;">Book a free 30-minute discovery call or reach out directly via WhatsApp or email.</p>
+                    <a href="https://wa.me/254797846126?text=Hello%20Victor,%20I'd%20like%20to%20book%20a%20free%2030-minute%20discovery%20call." target="_blank" class="btn btn-primary" style="font-size: 11px; padding: 10px 18px;">Book 30-min discovery call ↗</a>
+                </div>
+
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 8px;">
+                    <div>📍 Kenya · Digital solutions for African business</div>
+                    <div>✉️ Email: <a href="mailto:i.am.muregi@gmail.com" style="color: var(--ink); text-decoration: underline;">i.am.muregi@gmail.com</a></div>
+                    <div>💬 WhatsApp: <a href="https://wa.me/254797846126" target="_blank" style="color: var(--ink); text-decoration: underline;">+254 797 846 126</a></div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Working brief submitted successfully! We will review your requirements and reach out shortly.');">
+                <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); margin-bottom: 20px;">
+                    <span>WORKING BRIEF / 01</span>
+                    <span>* Required</span>
+                </div>
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Company / Organization *</label>
+                    <input type="text" required placeholder="Organization name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="you@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Project Type *</label>
+                    <select required>
+                        <option value="" disabled selected>Select a project type</option>
+                        <option>Website</option>
+                        <option>Custom Software</option>
+                        <option>School Management</option>
+                        <option>Financial System</option>
+                        <option>Payment Integration</option>
+                        <option>Business Automation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Project Description *</label>
+                    <textarea required placeholder="What are you trying to build, improve, or automate?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send working brief ↗</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="brand" style="color: var(--paper);">
+                    <div class="brand-mark">67</div>
+                    <span>TECH SYSTEMS</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#solutions" style="color: var(--paper);">Solutions</a>
+                    <a href="#products" style="color: var(--paper);">Products</a>
+                    <a href="#contact" style="color: var(--paper);">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 67 Tech Systems. Built around the problem.</span>
+                <span>Kenya · Africa</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            {
+                number: "01",
+                name: "EduCore",
+                category: "School management platform",
+                filter: "Digital products",
+                status: "PROJECT",
+                href: "https://educore-school-management-system-pi.vercel.app/",
+                description: "A digital operating platform for modern schools, bringing student records, fee tracking, automated report card generation, and teacher workflows into a scalable tenancy architecture built for 1,000+ students.",
+                techStack: ["React", "Node.js", "PostgreSQL", "M-Pesa API"],
+                caseStudy: { challenge: "Scaling report generation for 1,000+ students without server-side latency.", solution: "Implemented asynchronous background processing and optimized SQL query execution paths.", outcome: "Reduced administrative processing time by 70% and eliminated system timeouts during peak usage." }
+            },
+            {
+                number: "02",
+                name: "FinanceFlow Enterprise",
+                category: "Financial reporting & processing",
+                filter: "Digital products",
+                status: "PROJECT",
+                description: "A structured enterprise financial reporting and audit-logging system designed to bridge legacy accounting records with modern automated business intelligence.",
+                techStack: ["Java", "Spring Boot", "MySQL", "Docker"],
+                securityNote: "Full AES-256 data encryption and comprehensive immutable audit trails for regulatory compliance."
+            },
+            {
+                number: "03",
+                name: "Auto M-Pesa Reconciler",
+                category: "Payments & automation",
+                filter: "Automation",
+                status: "PROJECT",
+                description: "An automated reconciliation gateway connecting Daraja API callbacks with enterprise ledger systems to eliminate manual bookkeeping errors and speed up payment verification.",
+                techStack: ["Node.js", "Express", "Daraja API", "Redis"],
+                securityNote: "PCI-DSS aligned transaction handling and secure webhook verification protocols."
+            },
+            {
+                number: "04",
+                name: "Livestock Management System",
+                category: "Agriculture technology",
+                filter: "Digital products",
+                status: "LIVE",
+                href: "https://livestock-management-app.vercel.app",
+                description: "A secure farm operations platform tracking animal health, breeding records, worker assignments, and daily milk/yield reports across regional agricultural units.",
+                techStack: ["TypeScript", "FastAPI", "PostgreSQL", "Offline-Sync"],
+                caseStudy: { challenge: "Maintaining data integrity in rural farm environments with intermittent connectivity.", solution: "Engineered an offline-first synchronization engine using local indexed storage and atomic transaction batching.", outcome: "Achieved 100% data consistency across 5+ regional farm units regardless of network availability." }
+            },
+            {
+                number: "05",
+                name: "SaccoCore",
+                category: "Sacco & Chama platform",
+                filter: "Digital products",
+                status: "IN DEVELOPMENT",
+                description: "A financial cooperative engine engineered for automated member onboarding, share contributions, instant loan appraisal, and mobile-money dividend disbursement.",
+                techStack: ["Python", "Django", "PostgreSQL", "M-Pesa API"],
+                securityNote: "Aligned with Kenyan financial regulations and data protection acts.",
+                caseStudy: { challenge: "Handling concurrent mobile-money contributions and real-time loan disbursements without ledger discrepancies.", solution: "Implemented database-level locking and atomic transaction routines for all member share movements.", outcome: "Guaranteed absolute financial reconciliation across monthly savings cycles." }
+            },
+            {
+                number: "06",
+                name: "ClientCore",
+                category: "CRM & customer management",
+                filter: "Digital products",
+                status: "IN DEVELOPMENT",
+                description: "A high-velocity relationship management workspace connecting pipeline tracking, automated client follow-ups, and interaction history for growing B2B teams.",
+                techStack: ["React", "TypeScript", "Node.js", "Prisma"],
+                caseStudy: { challenge: "Providing sales teams with immediate visibility into client communications across multiple channels.", solution: "Built a unified event timeline indexing emails, notes, and task reminders into a single relational view.", outcome: "Cut client onboarding coordination time in half for pilot sales teams." }
+            },
+            {
+                number: "07",
+                name: "StockGuard Desktop",
+                category: "Offline inventory management",
+                filter: "Digital products",
+                status: "PROJECT",
+                description: "An offline-first desktop stock control system designed for retail locations with intermittent internet connectivity, ensuring zero data loss during sync cycles.",
+                techStack: ["Electron", "SQLite", "Node.js"],
+                caseStudy: { challenge: "Operating stock control smoothly during prolonged local internet outages.", solution: "Combined local SQLite persistence with background delta-sync when connectivity is restored.", outcome: "Zero downtime for point-of-sale inventory lookups during network interruptions." }
+            },
+            {
+                number: "08",
+                name: "Nuru AI",
+                category: "AI assistant concept",
+                filter: "Automation",
+                status: "CONCEPT / EXPERIMENTAL",
+                description: "A contextual intelligence layer exploring localized document search, automated customer support triage, and Swahili-English bilingual query assistance.",
+                techStack: ["OpenAI API", "Python", "LangChain", "Vector DB"],
+                caseStudy: { challenge: "Parsing localized organizational documents and answering queries with low latency.", solution: "Employed vector embeddings and semantic caching to speed up document retrieval.", outcome: "Delivered precise multi-lingual responses in under 800 milliseconds." }
+            },
+            {
+                number: "09",
+                name: "Sawa Solar",
+                category: "Website & digital presence",
+                filter: "Web & design",
+                status: "PROJECT",
+                href: "https://muregis.github.io/Sawa-solar--solution-website/",
+                description: "A high-performance digital showcase and quote-generation platform for Kenya-based solar and construction providers, pairing rich media with lightning-fast mobile load times.",
+                techStack: ["HTML5", "CSS3", "JavaScript", "SEO-Optimization"]
+            },
+            {
+                number: "10",
+                name: "Educational Institution Website",
+                category: "Website & digital presence",
+                filter: "Web & design",
+                status: "PROJECT",
+                href: "https://muregis.github.io/School-Website/",
+                description: "A secure, responsive institutional portal for technical academies and schools featuring fee structure downloads, CBC curriculum highlights, and parent inquiry workflows.",
+                techStack: ["React", "Vite", "Tailwind CSS"]
+            }
+        ];
+
+        function renderProducts(filterName) {
+            const grid = document.getElementById('product-grid');
+            const filtered = filterName === 'All' ? products : products.filter(p => p.filter === filterName);
+            
+            grid.innerHTML = filtered.map((p, idx) => `
+                <article class="product-row" id="prod-${idx}">
+                    <div class="product-row-header">
+                        <span class="product-index">${p.number}</span>
+                        <div class="product-main">
+                            <span class="product-category">PILLAR / ${p.filter.toUpperCase()} — ${p.category}</span>
+                            <h3>${p.name}</h3>
+                            <p class="product-desc">${p.description}</p>
+                            <div class="product-meta">
+                                <span class="status-badge"><span class="status-dot"></span>${p.status}</span>
+                                ${p.href ? `<a class="live-link" href="${p.href}" target="_blank">View live ↗</a>` : ''}
+                                ${p.techStack ? p.techStack.map(t => `<span class="tag">${t}</span>`).join('') : ''}
+                            </div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleDetails(${idx})" aria-label="Toggle details">↓</button>
+                    </div>
+                    <div class="product-details" id="details-${idx}">
+                        ${p.securityNote ? `<p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 12px;">🔒 ${p.securityNote}</p>` : ''}
+                        ${p.caseStudy ? `
+                            <div class="case-study-box">
+                                <strong style="display: block; margin-bottom: 8px; color: var(--copper); font-family: 'IBM Plex Mono', monospace; font-size: 11px;">TECHNICAL CASE STUDY</strong>
+                                <p style="margin-bottom: 6px;"><strong>Challenge:</strong> ${p.caseStudy.challenge}</p>
+                                <p style="margin-bottom: 6px;"><strong>Solution:</strong> ${p.caseStudy.solution}</p>
+                                <p><strong>Outcome:</strong> ${p.caseStudy.outcome}</p>
+                            </div>
+                        ` : ''}
+                        <div style="margin-top: 16px; display: flex; gap: 10px;">
+                            <a href="#contact" class="btn btn-outline" style="padding: 6px 12px; font-size: 11px; color: var(--ink); border-color: var(--line);">Request a Demo</a>
+                            <a href="#contact" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">Let's Build</a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function toggleDetails(idx) {
+            const details = document.getElementById(`details-${idx}`);
+            const btn = document.querySelector(`#prod-${idx} .expand-btn`);
+            details.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                renderProducts(e.target.getAttribute('data-filter'));
+            });
+        });
+
+        // Initial render
+        renderProducts('All');
+    </script>
+</body>
+</html>
